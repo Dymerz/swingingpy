@@ -12,7 +12,7 @@ Install
 Usage
 ------
 ```py
-    from swingingpy import SwingingDoor, Cpoint
+    from swingingpy import SwingingDoor, CPoint
 
     comp_dev = 1
     comp_max = 5
@@ -36,9 +36,9 @@ Usage
         point = compressor.check(p)
 
         if point:
-            print(f"Compressed {point}")
+            print(f"To be stored {point}")
         else:
-            print(f"Uncompressed {point}")
+            print(f"To be ignored {point}")
 ```
 
 
