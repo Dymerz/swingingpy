@@ -92,8 +92,6 @@ class SwingingDoor:
             self.original = self.snap_point
         self.snap_point = point
 
-        self.__point_count += 1
-
 
     def check(self, point: CPoint):
         """Check if a point need to be stored.
@@ -105,6 +103,7 @@ class SwingingDoor:
             CPoint: The point which need to be stored.
         """
         store = None
+        self.__point_count += 1
 
         # if first point
         if self.original is None:
@@ -123,7 +122,8 @@ class SwingingDoor:
 
             return store
 
-        if time_diff >= self.__comp_max:
+        # point is outside the time limit
+        if self.__comp_max != -1 and time_diff >= self.__comp_max:
             store = point
             self.calculate_window(point)
             self.__point_stored += 1
@@ -139,7 +139,6 @@ class SwingingDoor:
 
         # set the snapshot point
         self.snap_point = point
-        self.__point_count += 1
 
         return store
 
@@ -152,4 +151,5 @@ class SwingingDoor:
 
         if self.__point_stored == 0:
             return 100
+
         return 100 - 100 / (self.__point_count / self.__point_stored)
