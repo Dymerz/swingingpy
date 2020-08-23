@@ -25,8 +25,8 @@ def test_simple():
     ]
 
     count = 0
-    for p in points:
-        point = swing.check(p)
+    for _p in points:
+        point = swing.check(_p)
         if point:
             count += 1
 
